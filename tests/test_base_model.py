@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" Unittest for Base class """
+""" Unittest for BaseModel class """
 import unittest
-from models.base import Base
+from models.base_model import BaseModel
 
-class TestBase(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     pass        
