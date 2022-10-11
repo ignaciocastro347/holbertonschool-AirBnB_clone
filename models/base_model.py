@@ -13,7 +13,7 @@ class BaseModel:
         return { **self.__dict__, __class__: type(self).__name__ }
 
     def __str__(self):
-        return "[BaseModel] ({}) {}".format(self.id, self.__dict__)
+        return "[BaseModel] ({}) {}".format(self.id, self)
 
     def save(self):
         self.updated_at = datetime.now()
