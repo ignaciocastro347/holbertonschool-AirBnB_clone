@@ -10,7 +10,7 @@ class BaseModel:
         self.created_at = self.updated_at = datetime.now()
 
     def to_dict(self):
-        return { **self.__dict__, __class__: type(self).__name__ }
+        return { **self.__dict__, "__class__": type(self).__name__ }
 
     def __str__(self):
         return "[BaseModel] ({}) {}".format(self.id, self.__dict__)
