@@ -11,4 +11,8 @@ class TestBaseModel(unittest.TestCase):
         old_updated_at = self.b1.updated_at
         self.b1.save()
         self.assertTrue(old_updated_at != self.b1.updated_at)
+
+    def test_to_dict(self):
+        dict1 = self.b1.__dict__
+        self.assertTrue(True)
 		
