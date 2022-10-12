@@ -14,7 +14,7 @@ class BaseModel:
                 if id != "__class__":
                     if id == "created_at" or id == "updated_at":
                         i = kwargs[id]
-                        datetime.strptime(m, "%Y-%m-%dT%H:%M:%S.%f")
+                        datetime.strptime(i, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, id, kwargs[id])
 
     def to_dict(self):
