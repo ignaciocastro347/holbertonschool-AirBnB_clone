@@ -13,6 +13,5 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(old_updated_at != self.b1.updated_at)
 
     def test_to_dict(self):
-        dict1 = self.b1.to_dict()
-        self.assertTrue(True)
+        self.assertTrue(self.b1.to_dict(), self.b1.to_dictionary())
 		
