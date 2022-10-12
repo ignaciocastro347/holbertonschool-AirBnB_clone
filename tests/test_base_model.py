@@ -4,4 +4,11 @@ import unittest
 from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
-    pass        
+    def setUp(self):
+        self.b1 = BaseModel()
+
+    def test_save(self):
+        old_updated_at = self.b1.updated_at
+        self.b1.save()
+        self.assertTrue(old_updated_at != self.b1.updated_at)
+		
