@@ -5,9 +5,17 @@ from datetime import datetime
 
 
 class BaseModel:
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        if len(kwargs) != 0:
+            self.id = str(uuid.uuid4())
+            self.created_at = self.updated_at = datetime.now()
+        else:
+            for id in kwargs:
+                if id != "__class__":
+                    if id == "created_at" or id == "updated_at":
+                        i = kwargs[id]
+                        datetime.strptime(m, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, id, kwargs[id])
 
     def to_dict(self):
         return { 
