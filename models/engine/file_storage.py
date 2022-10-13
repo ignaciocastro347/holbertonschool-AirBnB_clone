@@ -4,6 +4,7 @@
 
 from models.base_model import BaseModel
 import json
+import os.path
 
 class FileStorage:
     """serializes to JSON and deserializes from JSON"""
@@ -24,9 +25,9 @@ class FileStorage:
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
         with open("self.__file_path", "w", encoding='utf-8') as write:
-            write.write(json.dumps(write))
+            write.write(json.dumps(self.__objects))
 
     def reload(self):
-        if self.__file_path != None:
+        if os.path.exists(self.__file_path):
             with open(self.__file_path, "r") as read:
                 json.load(read)
