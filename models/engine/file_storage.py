@@ -24,10 +24,9 @@ class FileStorage:
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
         with open("self.__file_path", "w", encoding='utf-8') as write:
-            write.write(json.dumps(save_object))
+            write.write(json.dumps(write))
 
     def reload(self):
-        if self.__file_path is None:
-            return
-        else:
-            json.dumps(self.__file_path)
+        if self.__file_path != None:
+            with open(self.__file_path, "r") as read:
+                json.load(read)
