@@ -20,8 +20,11 @@ class FileStorage:
         self.__objects[key] = obj
 
     def save(self):
-        with open("self.__file_path" , "w") as write:
-            return write.write(json.dumps(self.__objects, write))
+        save_object = {}
+        for key in self.__objects:
+            save_object[key] = self.__objects[key].to_dict()
+        with open("self.__file_path", "w", encoding='utf-8') as write:
+            json.dumps(save_object, write)
 
     def reload(self):
         if self.__file_path is None:
