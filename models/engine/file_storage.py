@@ -30,4 +30,3 @@ class FileStorage:
         if self.__file_path != None:
             with open(self.__file_path, "r") as read:
                 json.load(read)
-                
