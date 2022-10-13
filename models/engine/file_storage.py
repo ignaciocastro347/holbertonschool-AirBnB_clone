@@ -29,3 +29,5 @@ class FileStorage:
     def reload(self):
         if self.__file_path is None:
             return
+        else:
+            json.dumps(self.__file_path)
