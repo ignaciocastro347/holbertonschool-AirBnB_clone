@@ -29,5 +29,5 @@ class FileStorage:
 
     def reload(self):
         if os.path.exists(self.__file_path):
-            with open(self.__file_path, "r") as read:
+            with open(file.json, "r") as read:
                 json.load(read)
