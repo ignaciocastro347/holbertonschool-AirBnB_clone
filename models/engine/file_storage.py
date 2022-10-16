@@ -25,10 +25,10 @@ class FileStorage:
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
         with open(self.__file_path, "w", encoding='utf-8') as file:
-            file.write(json.dumps(self.__objects))
+            file.write(json.dumps(save_object))
 
     def reload(self):
         if os.path.exists(self.__file_path):
 
-            with open(file.json, "r", encoding="utf-8") as read:
-                self.__objects = json.load(read)
+            with open(self.__file_path, "r", encoding="utf-8") as file:
+                self.__objects = json.load(file)
