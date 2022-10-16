@@ -11,23 +11,32 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
-        FileStorage.__objects[obj.id] = obj
+        self.__objects[obj.id] = obj
 
     def save(self):
         save_object = {}
-        for key in FileStorage.__objects:
-            save_object[key] = FileStorage.__objects[key].to_dict()
-        with open(FileStorage.__file_path, "w", encoding='utf-8') as file:
+        # print(self.__objects)
+        for key in self.__objects:
+            save_object[key] = self.__objects[key].to_dict()
+            if type(save_object[key]) == "datetime":
+                save_object[key] = save_object[key].isoformat()
+        with open(self.__file_path, "w", encoding='utf-8') as file:
             file.write(json.dumps(save_object))
 
     def reload(self):
-        FileStorage.__objects = {}
-        if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
-                json_content = file.read()
-            json_content = json.loads(json_content) if json_content is not None else []
-            for key, value in json_content.items():
-                FileStorage.__objects[key] = value
+        try:
+            with open(self.__file_path) as file:
+                for key, value in json.load(file).items():
+                    self.__objects[key] = value
+        except:
+            pass
+        # self.__objects = {}
+        # if os.path.exists(self.__file_path):
+        #     with open(self.__file_path, "r", encoding="utf-8") as file:
+        #         json_content = file.read()
+        #     json_content = json.loads(json_content) if json_content is not None else []
+        #     for key, value in json_content.items():
+        #         self.__objects[key] = value
