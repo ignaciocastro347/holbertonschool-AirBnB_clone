@@ -18,9 +18,11 @@ class HBNBCommand(cmd.Cmd):
     """HBNBCommand Class"""
     prompt = "(hbnb) "
 
-    classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
-            'State': State, 'City': City, 'Amenity': Amenity,
-            'Review': Review}
+    classes = {
+        'BaseModel': BaseModel, 'User': User, 'Place': Place,
+        'State': State, 'City': City, 'Amenity': Amenity,
+        'Review': Review
+        }
 
     def do_create(self, arg):
         words = arg.split()
