@@ -3,6 +3,8 @@
 
 
 import json
+import datetime
+from multiprocessing.sharedctypes import Value
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -24,12 +26,8 @@ class FileStorage:
 
     def save(self):
         save_object = {}
-        # print("--------------")
-        # print(self.__objects)
-
-        for key in self.__objects:
-            save_object[key] = self.__objects[key].to_dict()
         with open(self.__file_path, "w", encoding='utf-8') as file:
+            save_object = {key: value.to_dict() for key, value in self.__objects.items()}
             json.dump(save_object, file)
 
     def reload(self):
