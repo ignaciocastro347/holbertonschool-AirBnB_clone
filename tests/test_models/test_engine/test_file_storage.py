@@ -10,4 +10,6 @@ class TestFileStorage(unittest.TestCase):
         f1.all().clear()
         f1.reload()
         self.assertTrue(len(f1.all()) == 0)
-        os.remove("file.json")
+
+if __name__ == "__main__":
+    unittest.main()
