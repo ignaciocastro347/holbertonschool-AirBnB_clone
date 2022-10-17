@@ -17,7 +17,7 @@ from models.state import State
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand Class"""
     prompt = '(hbnb) '
-    
+
     classes = {
                'BaseModel': BaseModel, 'User': User, 'Place': Place,
                'State': State, 'City': City, 'Amenity': Amenity,
@@ -27,15 +27,12 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         if not arg:
             print("** class name missing **")
-            return
-        if arg not in HBNBCommand.classes():
+        elif arg not in HBNBCommand.classes():
             print("** class doesn't exist **")
-            return
-        else:
-            words = HBNBCommand.classes[arg]()
-            words.save()
-            print(words.id)
-            storage.save()
+        words = HBNBCommand.classes[arg]()
+        words.save()
+        print(words.id)
+        storage.save()
 
     def do_show(self, arg):
         words = arg.split()
