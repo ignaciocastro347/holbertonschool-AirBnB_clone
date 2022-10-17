@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Unittest for FileStorage class """
 import unittest
-from os.path import exists
 from models.engine.file_storage import FileStorage
 
 class TestFileStorage(unittest.TestCase):
