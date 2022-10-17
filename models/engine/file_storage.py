@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 """files to json"""
-
-
 import json
-import datetime
 
 
 class FileStorage:
@@ -19,8 +16,6 @@ class FileStorage:
 
     def save(self):
         save_object = {}
-        # print("--------------")
-        # print(self.__objects)
 
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
@@ -29,14 +24,8 @@ class FileStorage:
 
     def reload(self):
         try:
-            # print("reolad1--------------")
-            # print(self.__objects)
             with open(self.__file_path) as file:
                 for key, value in json.load(file).items():
                     self.__objects[key] = eval(value["__class__"])(**value)
-            # print("reolad2--------------")
-            # print(self.__objects)
         except:
-            # print("ERRORRRRRR-------------------")
-            # print(err)
             pass
