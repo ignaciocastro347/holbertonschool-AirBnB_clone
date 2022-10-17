@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""files to json"""
+"""HBNBComand Module"""
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand Class"""
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
