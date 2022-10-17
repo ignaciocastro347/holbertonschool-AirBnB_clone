@@ -17,16 +17,22 @@ from models.state import State
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand Class"""
     prompt = '(hbnb) '
+    
+    classes = {
+               'BaseModel': BaseModel, 'User': User, 'Place': Place,
+               'State': State, 'City': City, 'Amenity': Amenity,
+               'Review': Review
+              }
 
-    def do_create(self, args):
-        if not args:
+    def do_create(self, arg):
+        if not arg:
             print("** class name missing **")
             return
-        if args not in HBNBCommand.classes():
+        if arg not in HBNBCommand.classes():
             print("** class doesn't exist **")
             return
         else:
-            words = HBNBCommand.classes[args]()
+            words = HBNBCommand.classes[arg]()
             words.save()
             print(words.id)
             storage.save()
