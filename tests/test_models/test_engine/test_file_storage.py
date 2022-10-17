@@ -9,5 +9,5 @@ class TestFileStorage(unittest.TestCase):
         f1 = FileStorage()
         f1.all().clear()
         f1.reload()
-        self.assertTrue(len(f1.all()) != 0)
+        self.assertTrue(len(f1.all()) == 0)
         os.remove("file.json")
