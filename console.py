@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
 from models.user import User
+from models.engine.file_storage import classes
 
 
 class HBNBCommand(cmd.Cmd):
