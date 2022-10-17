@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif arg not in HBNBCommand.classes():
             print("** class doesn't exist **")
-            
+
         words = HBNBCommand.classes[arg]()
         words.save()
         print(words.id)
