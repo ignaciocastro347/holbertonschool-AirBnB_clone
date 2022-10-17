@@ -21,3 +21,6 @@ class TestBaseModel(unittest.TestCase):
             f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
             , model.__str__()
             )
+
+if __name__ == "__main__":
+    unittest.main()
