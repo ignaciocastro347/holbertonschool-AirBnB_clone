@@ -4,6 +4,7 @@
 
 import json
 import os.path
+from models.base_model import BaseModel
 
 class FileStorage:
     """serializes to JSON and deserializes from JSON"""
@@ -18,25 +19,24 @@ class FileStorage:
 
     def save(self):
         save_object = {}
+        # print("--------------")
         # print(self.__objects)
+
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
-            if type(save_object[key]) == "datetime":
-                save_object[key] = save_object[key].isoformat()
         with open(self.__file_path, "w", encoding='utf-8') as file:
-            file.write(json.dumps(save_object))
+            json.dump(save_object, file)
 
     def reload(self):
         try:
+            # print("reolad1--------------")
+            # print(self.__objects)
             with open(self.__file_path) as file:
                 for key, value in json.load(file).items():
-                    self.__objects[key] = value
+                    self.__objects[key] = eval(value["__class__"])(**value)
+            # print("reolad2--------------")
+            # print(self.__objects)
         except:
+            # print("ERRORRRRRR-------------------")
+            # print(err)
             pass
-        # self.__objects = {}
-        # if os.path.exists(self.__file_path):
-        #     with open(self.__file_path, "r", encoding="utf-8") as file:
-        #         json_content = file.read()
-        #     json_content = json.loads(json_content) if json_content is not None else []
-        #     for key, value in json_content.items():
-        #         self.__objects[key] = value
