@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         exit()
 
-    def emptyline():
+    def emptyline(self):
         pass
 
 if __name__ == '__main__':
