@@ -24,8 +24,14 @@ class FileStorage:
 
     def reload(self):
         try:
+            # print("reolad1--------------")
+            # print(self.__objects)
             with open(self.__file_path) as file:
                 for key, value in json.load(file).items():
                     self.__objects[key] = eval(value["__class__"])(**value)
+            # print("reolad2--------------")
+            # print(self.__objects)
         except:
+            # print("ERRORRRRRR-------------------")
+            # print(err)
             pass
