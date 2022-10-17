@@ -5,22 +5,28 @@ from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
 from models.user import User
-from models.engine.file_storage import classes
+from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class HBNBCommand(cmd.Cmd):
     """HBNBCommand Class"""
     prompt = '(hbnb) '
 
-    def do_create(self, arg):
-        if not arg:
+    def do_create(self, args):
+        if not args:
             print("** class name missing **")
             return
-        if arg not in storage.classes():
+        if args not in HBNBCommand.classes():
             print("** class doesn't exist **")
             return
         else:
-            words = storage.classes[arg]()
+            words = HBNBCommand.classes[args]()
             words.save()
             print(words.id)
             storage.save()
