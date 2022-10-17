@@ -17,10 +17,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(self.b1.to_dict(), self.b1.to_dict())
 		
     def __str__(self):
-        self.assertEqual(
-            f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
-            , model.__str__()
-            )
+        str_model = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
+        self.assertEqual(str_model, model.__str__())
 
 if __name__ == "__main__":
     unittest.main()
