@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """files to json"""
 import cmd
-import models
 from models.base_model import BaseModel
 from models import storage
 from models.engine.file_storage import FileStorage
@@ -13,14 +12,17 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_create(self, arg):
-        if arg == "" or arg is None:
+        if not arg:
             print("** class name missing **")
+            return
         elif arg not in storage.classes():
             print("** class doesn't exist **")
+            return
         else:
-            words = storage.classes()[arg]()
+            words = storage.classes[arg]()
             words.save()
             print(words.id)
+            storage.save()
 
     def do_show(self, arg):
         words = arg.split()
