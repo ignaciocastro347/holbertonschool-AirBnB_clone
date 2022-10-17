@@ -16,9 +16,11 @@ class BaseModel:
             models.storage.new(self)
         else:
             for key, value in kwargs.items():
-                if key != "__class__":
-                    if key in ("created_at", "updated_at"):
-                        self.__dict__[key] = datetime.fromisoformat(value)
+                if key in ("created_at", "updated_at"):
+                    self.__dict__[key] = datetime.fromisoformat(value)
+                elif key != "__class__":
+                    continue
+                else:
                     self.__dict__[key] = value
 
     def to_dict(self):
