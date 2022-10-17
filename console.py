@@ -21,7 +21,6 @@ class HBNBCommand(cmd.Cmd):
             words = storage.classes()[arg]()
             words.save()
             print(words.id)
-        words = arg.split()
 
     def do_show(self, arg):
         words = arg.split()
