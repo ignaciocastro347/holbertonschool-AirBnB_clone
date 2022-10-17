@@ -52,6 +52,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
             except Exception:
                 print("** no instance found **")
+                return
 
     def do_all(self, arg):
         words = arg.split()
