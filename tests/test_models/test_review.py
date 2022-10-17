@@ -7,7 +7,7 @@ from models.review import Review
 class TestReview(unittest.TestCase):
     def test_review(self):
         model = Review()
-        self.assertTrue(type(mode.name) is str)
+        self.assertTrue(type(model.name) is str)
 
-if __name__ == ""__main__"":
+if __name__ == "__main__":
     unittest.main()

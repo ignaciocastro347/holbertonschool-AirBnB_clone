@@ -6,8 +6,8 @@ from models.city import City
 
 class TestCity(unittest.TestCase):
     def test_city(self):
-        model = State()
-        self.assertTrue(type(mode.name) is str)
+        model = City()
+        self.assertTrue(type(model.name) is str)
 
-if __name__ == ""__main__"":
+if __name__ == "__main__":
     unittest.main()
