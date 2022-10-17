@@ -15,7 +15,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        elif arg not in storage.classes():
+        if arg not in storage.classes():
             print("** class doesn't exist **")
             return
         else:
