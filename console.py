@@ -13,16 +13,15 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_create(self, arg):
-        words = arg.split()
-        if len(words) == 0:
+        if arg == "" or arg is None:
             print("** class name missing **")
-            return
-        try:
-            obj = eval(words[0])()
-            obj.save()
-            print(obj.id)
-        except Exception:
+        elif arg not in storage.classes():
             print("** class doesn't exist **")
+        else:
+            words = storage.classes()[arg]()
+            words.save()
+            print(words.id)
+        words = arg.split()
 
     def do_show(self, arg):
         words = arg.split()
@@ -39,10 +38,13 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        words = arg.split()
-        if len(words) < 1:
+        if arg == '' or arg is None:
             print("** class name missing **")
-        elif len(words) < 2:
+        else:
+            words = arg.split()
+        if len(words) == 0:
+            print("** class name missing **")
+        elif len(words) == 1:
             print("** instance id missing **")
         elif words[0] not in ("BaseModel"):
             print("** class doesn't exist **")

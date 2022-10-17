@@ -4,18 +4,22 @@
 
 import json
 import datetime
-from models.base_model import BaseModel
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
+
 
 class FileStorage:
     """serializes to JSON and deserializes from JSON"""
     __file_path = "file.json"
     __objects = {}
+
+    def classes(self):
+        """dictionary of attributes"""
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
 
     def all(self):
         return self.__objects
