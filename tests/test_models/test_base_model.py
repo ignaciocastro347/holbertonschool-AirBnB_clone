@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Unittest for BaseModel class """
+from pyexpat import model
 import unittest
 from models.base_model import BaseModel
 
@@ -15,3 +16,8 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         self.assertTrue(self.b1.to_dict(), self.b1.to_dict())
 		
+    def __str__(self):
+        self.assertEqual(
+            f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
+            , model.__str__()
+            )
