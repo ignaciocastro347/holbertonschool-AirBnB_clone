@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """files to json"""
+
+
 import json
+import datetime
 
 
 class FileStorage:
@@ -16,6 +19,8 @@ class FileStorage:
 
     def save(self):
         save_object = {}
+        # print("--------------")
+        # print(self.__objects)
 
         for key in self.__objects:
             save_object[key] = self.__objects[key].to_dict()
